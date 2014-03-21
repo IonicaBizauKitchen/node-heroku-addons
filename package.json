@@ -1,0 +1,19 @@
+{
+  "name": "heroku-addons",
+  "version": "0.1.0",
+  "description": "A convenience library for fetching metadata about Heroku Addons",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "heroku-client": "^1.2.0",
+    "async": "^0.2.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.0.16",
+    "mocha": "^1.18.2"
+  }
+}
