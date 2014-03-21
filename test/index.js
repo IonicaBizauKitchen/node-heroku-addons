@@ -62,27 +62,35 @@ describe('addons.mix()', function(){
       assert.equal(mix.plans[0].name, 'mongohq:ssd_1g_elastic')
       assert.equal(mix.plans[0].price.cents, 1800)
       assert.equal(mix.plans[1].price.cents, 1400)
-      assert.equal(mix.total, 3200)
+      assert.equal(mix.totalCents, 3200)
       done()
     })
   })
 
-  it('returns a currency-style total', function(done){
+  it('returns a human-friendly dollar amount total', function(done){
     addons.mix(['mongohq:ssd_1g_elastic', 'memcachedcloud:100'], function(err, mix) {
-      assert.equal(mix.total, 3200)
-      assert.equal(mix.totalCurrency, '$32 /month')
+      assert.equal(mix.totalCents, 3200)
+      assert.equal(mix.total, '$32/mo')
       done()
     })
   })
 
-  it('gracefully propagates errors for nonexistent addons', function(done){
+  it('returns free if total is zero', function(done){
+    addons.mix(['heroku-postgresql'], function(err, mix) {
+      assert.equal(mix.totalCents, 0)
+      assert.equal(mix.total, 'Free')
+      done()
+    })
+  })
+
+  it('propagates errors for nonexistent addons', function(done){
     addons.mix(['nonexistent-addon'], function(err, mix) {
       assert(err)
       done()
     })
   })
 
-  it('gracefully propagates errors for nonexistent plans',function(done){
+  it('propagates errors for nonexistent plans',function(done){
     addons.mix(['mongohq:bad-plan'], function(err, mix) {
       assert(err)
       assert(err.body)
@@ -107,7 +115,7 @@ describe('addons.mix()', function(){
       assert(!err)
       assert(mix.plans)
       assert(mix.total)
-      assert.equal(typeof(mix.total), 'number')
+      assert.equal(typeof(mix.totalCents), 'number')
       done()
     })
   })
