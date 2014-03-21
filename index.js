@@ -31,7 +31,6 @@ addons.mix = function(slugs, cb) {
     if (err) return cb(err)
 
     var mix = {}
-    mix.plans = plans
 
     mix.totalCents = plans.reduce(function(sum, plan) {
       return plan.price.cents + sum
@@ -42,6 +41,8 @@ addons.mix = function(slugs, cb) {
     } else {
       mix.total = "$" + mix.totalCents/100 + "/mo"
     }
+
+    mix.plans = plans
 
     cb(null, mix)
   })
