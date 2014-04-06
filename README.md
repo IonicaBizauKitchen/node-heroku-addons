@@ -44,8 +44,8 @@ The output will look something like this:
 
 ```js
 {
-  total: "$59/mo",
-  totalCents: 5900,
+  totalPrice: "$59/mo",
+  totalPriceInCents: 5900,
   plans: [{
     created_at: '2013-08-05T20:50:21Z',
     default: true,
