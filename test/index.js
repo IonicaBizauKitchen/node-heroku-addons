@@ -1,3 +1,4 @@
+require('dotenv').load()
 var assert = require("assert")
 var util = require("util")
 var addons = require("..")
@@ -15,6 +16,13 @@ describe('addons.getPlan()', function(){
   it('accepts an addon string with no plan', function(done){
     addons.getPlan('mongohq', function(err, plan) {
       assert.equal(plan.name, 'mongohq:sandbox')
+      done()
+    })
+  })
+
+  it('returns a pretty price', function(done){
+    addons.getPlan('mongohq', function(err, plan) {
+      assert.equal(plan.prettyPrice, 'Free')
       done()
     })
   })

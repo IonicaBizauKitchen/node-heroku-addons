@@ -90,10 +90,10 @@ See [test/index.js](test/index.js) for more details.
 
 ## Tests
 
-The tests are not mocked. They hit the real API, so you need to run them with
-foreman to ensure the `HEROKU_API_TOKEN` environment variable is set.
+The tests are not mocked: they hit the real API. The test suite expects a
+`HEROKU_API_TOKEN` in your `.env` file:
 
 ```sh
 echo "HEROKU_API_TOKEN=$(heroku auth:token)" >> .env
-foreman run npm test
+npm test
 ```
