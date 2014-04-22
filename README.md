@@ -1,4 +1,6 @@
-# Heroku Addons
+# Heroku Addons [DEPRECATED]
+
+**Good news!**: The Heroku Platform API now allows unauthenticated requests for Add-on metadata! That means this module no longer needs to exist. More info at https://devcenter.heroku.com/changelog-items/457
 
 A convenience library for querying Heroku's addons API.
 
